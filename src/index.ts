@@ -1,9 +1,18 @@
-import dotenv from 'dotenv';
-import { generateStories } from './storyGenerator';
-import { defaultConfig } from './config';
-import type { Config } from './types';
+import { generateStories as originalGenerateStories } from "./storyGenerator";
+import type { Config } from "./types";
 
-dotenv.config();
+export interface RequiredKeyConfig extends Omit<Config, "openaiApiKey"> {
+  openaiApiKey: string;
+}
 
-export { generateStories, defaultConfig };
-export type { Config };
+export function generateStories(config: RequiredKeyConfig): Promise<void> {
+  // Ensure the API key is provided
+  if (!config.openaiApiKey) {
+    throw new Error("OpenAI API key is required");
+  }
+
+  return originalGenerateStories(config);
+}
+
+export { defaultConfig } from "./config";
+export type { RequiredKeyConfig as Config };

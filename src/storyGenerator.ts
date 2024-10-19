@@ -52,7 +52,8 @@ async function createStoryForComponent(
   const prompt: string = config.promptTemplate
     .replace("{componentName}", componentName)
     .replace("{fileName}", fileName)
-    .replace("{componentContent}", componentContent);
+    .replace("{componentContent}", componentContent)
+    .replace("{componentPath}", path.join(config.componentDirectory, fileName));
 
   try {
     const response = await openai.chat.completions.create({
@@ -61,23 +62,12 @@ async function createStoryForComponent(
       temperature: config.temperature,
     });
 
-    let storyContent = response.choices[0].message.content?.trim() || "";
+    let storyContent = response.choices[0]?.message.content?.trim() || "";
     storyContent = storyContent.replace(/^```typescript\s*/, "");
     storyContent = storyContent.replace(/^```\s*/, "");
     storyContent = storyContent.replace(/\s*```$/, "");
 
-    // Add custom import statements
-    const customImports = config.importStatements
-      .map((stmt) =>
-        stmt
-          .replace("{componentName}", componentName)
-          .replace("{fileName}", fileName)
-          .replace(
-            "{componentPath}",
-            path.join(config.componentImportPath, fileName).replace(/\\/g, "/")
-          )
-      )
-      .join("\n");
+    const customImports = config.importStatements.join("\n");
 
     return `${customImports}\n\n${storyContent}`;
   } catch (error) {

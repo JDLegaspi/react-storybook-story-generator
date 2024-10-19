@@ -27,18 +27,18 @@ OPENAI_API_KEY=your_api_key_here
 2. Create a script to run the story generator (e.g., `generate-stories.ts`):
 
 ```typescript
-import { generateStories, defaultConfig } from "storybook-story-generator";
+const { generateStories, defaultConfig } = require("storybook-story-generator");
 
 const customConfig = {
   ...defaultConfig,
+  openaiAPIKey: "YOUR_OPENAI_API_KEY",
   componentDirectory: "./src/components",
   outputDirectory: "./src/stories",
-  componentImportPath: "../../components", // Adjust based on your project structure
+  componentImportPath: "../components",
   importStatements: [
     ...defaultConfig.importStatements,
-    "import 'app/css/style.css';", // Add any project-specific imports
+    "import 'app/css/style.css';",
   ],
-  // Add any other custom configurations here
 };
 
 generateStories(customConfig)
@@ -56,17 +56,17 @@ ts-node generate-stories.ts
 
 You can customize various aspects of the story generation process. Here are the available configuration options:
 
-| Option                | Type     | Description                                | Default                      |
-| --------------------- | -------- | ------------------------------------------ | ---------------------------- |
-| `openaiApiKey`        | string   | Your OpenAI API key                        | `process.env.OPENAI_API_KEY` |
-| `openaiModel`         | string   | The OpenAI model to use                    | `'gpt-4-1106-preview'`       |
-| `temperature`         | number   | Creativity of the AI (0-1)                 | `0.7`                        |
-| `componentDirectory`  | string   | Directory containing your React components | `'./components'`             |
-| `outputDirectory`     | string   | Directory where stories will be generated  | `'./stories'`                |
-| `storyFileExtension`  | string   | File extension for generated stories       | `'.stories.tsx'`             |
-| `promptTemplate`      | string   | Template for the story generation prompt   | (see defaultConfig)          |
-| `importStatements`    | string[] | Array of import statements to include      | (see defaultConfig)          |
-| `componentImportPath` | string   | Path to import components from             | `'../components'`            |
+| Option                | Type     | Description                                | Default                |
+| --------------------- | -------- | ------------------------------------------ | ---------------------- |
+| `openaiApiKey`        | string   | Your OpenAI API key                        | undefined              |
+| `openaiModel`         | string   | The OpenAI model to use                    | `'gpt-4-1106-preview'` |
+| `temperature`         | number   | Creativity of the AI (0-1)                 | `0.7`                  |
+| `componentDirectory`  | string   | Directory containing your React components | `'./components'`       |
+| `outputDirectory`     | string   | Directory where stories will be generated  | `'./stories'`          |
+| `storyFileExtension`  | string   | File extension for generated stories       | `'.stories.tsx'`       |
+| `promptTemplate`      | string   | Template for the story generation prompt   | (see defaultConfig)    |
+| `importStatements`    | string[] | Array of import statements to include      | (see defaultConfig)    |
+| `componentImportPath` | string   | Path to import components from             | `'../components'`      |
 
 ## Customizing the Prompt
 
