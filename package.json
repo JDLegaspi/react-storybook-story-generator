@@ -1,0 +1,60 @@
+{
+  "name": "storybook-story-generator",
+  "version": "1.0.0",
+  "description": "Automatically generate Storybook stories for React components using OpenAI's GPT models",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "jest",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "storybook",
+    "react",
+    "openai",
+    "gpt",
+    "story-generator",
+    "typescript"
+  ],
+  "author": "Jose Legaspi",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "openai": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.12",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint": "^8.4.1",
+    "jest": "^27.4.3",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JDLegaspi/react-storybook-story-generator"
+  },
+  "bugs": {
+    "url": "https://github.com/JDLegaspi/react-storybook-story-generator/issues"
+  },
+  "homepage": "https://github.com/JDLegaspi/react-storybook-story-generator#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
