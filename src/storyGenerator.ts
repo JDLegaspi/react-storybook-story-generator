@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { OpenAI } from "openai";
 import { defaultConfig } from "./config";
-import type { Config, StoryGenerationResult } from "./types";
+import type { Config } from "./types";
 
 export async function generateStories(
   userConfig: Partial<Config> = {}
