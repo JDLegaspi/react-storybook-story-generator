@@ -18,20 +18,14 @@ npm install storybook-story-generator
 
 ## Usage
 
-1. Set up your OpenAI API key in a `.env` file in your project root:
-
-```
-OPENAI_API_KEY=your_api_key_here
-```
-
-2. Create a script to run the story generator (e.g., `generate-stories.ts`):
+1. Create a script to run the story generator (e.g., `generate-stories.ts`):
 
 ```typescript
 const { generateStories, defaultConfig } = require("storybook-story-generator");
 
 const customConfig = {
   ...defaultConfig,
-  openaiAPIKey: "YOUR_OPENAI_API_KEY",
+  openaiAPIKey: "YOUR_OPENAI_API_KEY", // we recommend using an environment variable here
   componentDirectory: "./src/components",
   outputDirectory: "./src/stories",
   componentImportPath: "../components",
@@ -46,7 +40,7 @@ generateStories(customConfig)
   .catch((error: Error) => console.error("Error in story generation:", error));
 ```
 
-3. Run the script:
+2. Run the script:
 
 ```bash
 ts-node generate-stories.ts
