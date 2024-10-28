@@ -1,6 +1,6 @@
 {
   "name": "storybook-story-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automatically generate Storybook stories for React components using OpenAI's GPT models",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

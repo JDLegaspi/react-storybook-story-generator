@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1729676628443" clover="3.2.0">
-  <project timestamp="1729676628443" name="All files">
+<coverage generated="1730077899586" clover="3.2.0">
+  <project timestamp="1730077899586" name="All files">
     <metrics statements="38" coveredstatements="38" conditionals="7" coveredconditionals="6" methods="4" coveredmethods="4" elements="49" coveredelements="48" complexity="0" loc="38" ncloc="38" packages="1" files="3" classes="3"/>
     <file name="config.ts" path="/Users/jose/Documents/react-storybook-story-generator/src/config.ts">
       <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
